@@ -1,5 +1,3 @@
-#define ACCELERATE_LAPACK_ILP64
-#define ACCELERATE_NEW_LAPACK
 #include"ext.h"            // standard Max include, always required (except in Jitter)
 #include"ext_obex.h"        // required for "new" style objects
 #include"z_dsp.h"            // required for MSP objects
@@ -178,7 +176,7 @@ C74_HIDDEN void boundary(t_waveeq1d const * const this, double const l, double c
 }
 C74_EXPORT void ext_main(void * const _) {
     if ( !class ) {
-        t_class * const obj = class_new("mc.waveeq1d~", (method const)new, (method const)del, sizeof(t_waveeq1d), NULL, A_GIMME, 0);
+        t_class * const obj = class_new("mc.waveq1~", (method const)new, (method const)del, sizeof(t_waveeq1d), NULL, A_GIMME, 0);
         class_addmethod(obj, (method const)inputchanged, "inputchanged", A_CANT, 0);
         class_addmethod(obj, (method const)multichanneloutputs, "multichanneloutputs", A_CANT, 0);
         class_addmethod(obj, (method const)dsp64, "dsp64", A_CANT, 0);
