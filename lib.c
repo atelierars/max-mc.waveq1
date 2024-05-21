@@ -7,21 +7,23 @@
 typedef struct {
     t_pxobject const super;
 	uintptr_t const inputs[2];
-	uintptr_t const length;
 	uintptr_t const elapse;
-	double * const memory;
+	uintptr_t const length;
 	double const damping;
-	simd_float2 const boundary;
+	simd_double2 const boundary;
+	simd_double3 const strength;
+	double * const memory;
 } t_waveeq1d;
 C74_HIDDEN static t_class const * class = NULL;
 C74_HIDDEN void*new(t_symbol const * const symbol, long const argc, t_atom const * const argv) {
 	t_waveeq1d * const this = (t_waveeq1d * const)object_alloc((t_class*const)class);
     if ( this ) {
 		// attr
+		*(double*const)(&this->damping) = 0;
+		*(simd_double2*const)(&this->boundary) = simd_make_double2(0, 0);
+		*(simd_double3*const)(&this->strength) = simd_make_double3(0.5, 0, -0.5);
 		attr_args_process(this, argc, (t_atom*const)argv);
 		*(double const**const)(&this->memory) = (double*const)sysmem_newptr(0);
-		*(double*const)(&this->damping) = 0;
-		*(simd_float2*const)(&this->boundary) = simd_make_float2(0, 0);
 		
 		// init
         z_dsp_setup((t_pxobject*const)&this->super, 2);
@@ -69,8 +71,13 @@ C74_HIDDEN void perfroutine64(t_waveeq1d * const this, t_object const * const ds
 		this->memory + 8 * N,
 		this->memory + 9 * N,
 	};
+	double const s[3] = {
+		this->strength.x,
+		this->strength.y,
+		this->strength.z,
+	};
 	double const r = pow(10, 0.05 * this->damping / (uintptr_t const)userparam);
-	register simd_float2 const b = 1 - this->boundary;
+	register simd_double2 const b = 1 - this->boundary;
 	register uintptr_t tau = this->elapse % 3 + 3;
 	double const * const * const x = ins;
 	double const * const * const z = ins + X;
@@ -143,10 +150,9 @@ C74_HIDDEN void perfroutine64(t_waveeq1d * const this, t_object const * const ds
 				   N);
 		
 		// u[f] <- u[f] + a[f]
-		vDSP_vaddD(a[k], 1, u[k], 1, u[k], 1, N);
-		
-		// u[f] <- u[f] - a[f]
-		vDSP_vsubD(a[i], 1, u[k], 1, u[k], 1, N);
+		vDSP_vsmaD(a[k], 1, s + 0, u[k], 1, u[k], 1, N);
+		vDSP_vsmaD(a[j], 1, s + 1, u[k], 1, u[k], 1, N);
+		vDSP_vsmaD(a[i], 1, s + 2, u[k], 1, u[k], 1, N);
 		
 		// u <- u * r
 		vDSP_vsmulD(u[j], 1, &r, u[j], 1, N);
@@ -168,21 +174,16 @@ C74_HIDDEN void dsp64(t_waveeq1d const * const this, t_object const * const dsp6
 	*(uintptr_t*const)&this->elapse = 0;
 	dsp_add64((t_object*const)dsp64, (t_object*const)this, (t_perfroutine64 const)perfroutine64, 0, (uintptr_t const)samplerate);
 }
-C74_HIDDEN void damping(t_waveeq1d const * const this, double const value) {
-	*(double*const)&this->damping = value;
-}
-C74_HIDDEN void boundary(t_waveeq1d const * const this, double const l, double const r) {
-	*(simd_float2*const)&this->boundary = simd_make_float2(l, r);
-}
 C74_EXPORT void ext_main(void * const _) {
     if ( !class ) {
         t_class * const obj = class_new("mc.waveq1~", (method const)new, (method const)del, sizeof(t_waveeq1d), NULL, A_GIMME, 0);
         class_addmethod(obj, (method const)inputchanged, "inputchanged", A_CANT, 0);
         class_addmethod(obj, (method const)multichanneloutputs, "multichanneloutputs", A_CANT, 0);
         class_addmethod(obj, (method const)dsp64, "dsp64", A_CANT, 0);
-		class_addmethod(obj, (method const)damping, "damping", A_FLOAT, 0);
-		class_addmethod(obj, (method const)boundary, "boundary", A_FLOAT, A_FLOAT, 0);
 		class_addattr(obj, attr_offset_new("chans", gensym("long"), 0, (method const)0L, (method const)0L, offsetof(t_waveeq1d, length)));
+		class_addattr(obj, attr_offset_new("damping", gensym("float64"), 0, (method const)0L, (method const)0L, offsetof(t_waveeq1d, damping)));
+		class_addattr(obj, attr_offset_array_new("boundary", gensym("float64"), 2, 0, (method const)0L, (method const)0L, 0, offsetof(t_waveeq1d, boundary)));
+		class_addattr(obj, attr_offset_array_new("strength", gensym("float64"), 3, 0, (method const)0L, (method const)0L, 0, offsetof(t_waveeq1d, strength)));
         class_dspinit(obj);
         class_register(CLASS_BOX, obj);
         class = obj;
