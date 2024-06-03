@@ -76,10 +76,10 @@ C74_HIDDEN void routine64(t_waveeq1d * const this, t_object const * const dsp64,
 			af[  0] = fix(outs[  0][t]),
 			ac[  0],
 			ap[  0],
-			simd_dot((simd_double4 const) {
+			simd_dot((simd_double2 const) {
 				1 + fix(( y[(  1)%Y][t] - y[(  0)%Y][t] ) / ( y[(  1)%Y][t] + y[(  0)%Y][t] )),
 				1,
-			}, (simd_double4 const) {
+			}, (simd_double2 const) {
 				uc[  1] - uc[  0],
 				uc[  0],
 			})
@@ -88,10 +88,10 @@ C74_HIDDEN void routine64(t_waveeq1d * const this, t_object const * const dsp64,
 			af[N-1] = fix(outs[N-1][t]),
 			ac[N-1],
 			ap[N-1],
-			simd_dot((simd_double4 const) {
+			simd_dot((simd_double2 const) {
 				1 + fix(( y[(N-2)%Y][t] - y[(N-1)%Y][t] ) / ( y[(N-2)%Y][t] + y[(N-1)%Y][t] )),
 				1,
-			}, (simd_double4 const) {
+			}, (simd_double2 const) {
 				uc[N-2] - uc[N-1],
 				uc[N-1]
 			})
