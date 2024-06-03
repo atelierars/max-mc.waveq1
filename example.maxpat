@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 5,
-			"revision" : 6,
+			"minor" : 6,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 135.0, 87.0, 1271.0, 727.0 ],
+		"rect" : [ 134.0, 87.0, 1271.0, 689.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,22 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"fontface" : 0,
+					"fontname" : "Arial",
+					"fontsize" : 12.0,
+					"id" : "obj-15",
+					"maxclass" : "mc.number~",
+					"mode" : 2,
+					"numinlets" : 2,
+					"numoutlets" : 3,
+					"outlettype" : [ "multichannelsignal", "float", "int" ],
+					"patching_rect" : [ 455.0, 498.0, 478.0, 34.0 ],
+					"sig" : [ 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-27",
 					"maxclass" : "spectroscope~",
@@ -104,7 +120,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 15.0, 180.0, 104.0, 22.0 ],
-					"text" : "mcs.gate~ 512 48"
+					"text" : "mcs.gate~ 512 16"
 				}
 
 			}
@@ -158,8 +174,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 6,
+							"minor" : 6,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -470,8 +486,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 5,
-							"revision" : 6,
+							"minor" : 6,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -563,8 +579,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 6,
+											"minor" : 6,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -777,8 +793,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 6,
+											"minor" : 6,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1174,8 +1190,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 5,
-											"revision" : 6,
+											"minor" : 6,
+											"revision" : 2,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1921,7 +1937,7 @@
 					"maxclass" : "mc.ezdac~",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 15.0, 510.0, 45.0, 45.0 ]
+					"patching_rect" : [ 15.0, 540.0, 45.0, 45.0 ]
 				}
 
 			}
@@ -1962,14 +1978,14 @@
 							"fileversion" : 1,
 							"appversion" : 							{
 								"major" : 8,
-								"minor" : 5,
-								"revision" : 6,
+								"minor" : 6,
+								"revision" : 2,
 								"architecture" : "x64",
 								"modernui" : 1
 							}
 ,
 							"classnamespace" : "dsp.gen",
-							"rect" : [ 157.0, 309.0, 600.0, 450.0 ],
+							"rect" : [ 34.0, 62.0, 1372.0, 804.0 ],
 							"bglocked" : 0,
 							"openinpresentation" : 0,
 							"default_fontsize" : 12.0,
@@ -2001,11 +2017,11 @@
 									"box" : 									{
 										"maxclass" : "newobj",
 										"text" : "max 0",
-										"numoutlets" : 1,
 										"outlettype" : [ "" ],
 										"patching_rect" : [ 15.0, 105.0, 41.0, 22.0 ],
+										"numinlets" : 1,
 										"id" : "obj-1",
-										"numinlets" : 1
+										"numoutlets" : 1
 									}
 
 								}
@@ -2013,11 +2029,11 @@
 									"box" : 									{
 										"maxclass" : "newobj",
 										"text" : "*",
-										"numoutlets" : 1,
 										"outlettype" : [ "" ],
 										"patching_rect" : [ 15.0, 135.0, 29.5, 22.0 ],
+										"numinlets" : 2,
 										"id" : "obj-9",
-										"numinlets" : 2
+										"numoutlets" : 1
 									}
 
 								}
@@ -2025,11 +2041,11 @@
 									"box" : 									{
 										"maxclass" : "newobj",
 										"text" : "peek shape",
-										"numoutlets" : 2,
 										"outlettype" : [ "", "" ],
 										"patching_rect" : [ 15.0, 75.0, 71.0, 22.0 ],
+										"numinlets" : 2,
 										"id" : "obj-8",
-										"numinlets" : 2
+										"numoutlets" : 2
 									}
 
 								}
@@ -2037,11 +2053,11 @@
 									"box" : 									{
 										"maxclass" : "newobj",
 										"text" : "- 1",
-										"numoutlets" : 1,
 										"outlettype" : [ "" ],
 										"patching_rect" : [ 15.0, 45.0, 23.0, 22.0 ],
+										"numinlets" : 1,
 										"id" : "obj-7",
-										"numinlets" : 1
+										"numoutlets" : 1
 									}
 
 								}
@@ -2049,11 +2065,11 @@
 									"box" : 									{
 										"maxclass" : "newobj",
 										"text" : "mc_channel",
-										"numoutlets" : 1,
 										"outlettype" : [ "" ],
 										"patching_rect" : [ 15.0, 15.0, 73.0, 22.0 ],
+										"numinlets" : 0,
 										"id" : "obj-6",
-										"numinlets" : 0
+										"numoutlets" : 1
 									}
 
 								}
@@ -2061,11 +2077,11 @@
 									"box" : 									{
 										"maxclass" : "newobj",
 										"text" : "buffer shape",
-										"numoutlets" : 2,
 										"outlettype" : [ "", "" ],
 										"patching_rect" : [ 105.0, 15.0, 75.0, 22.0 ],
+										"numinlets" : 0,
 										"id" : "obj-5",
-										"numinlets" : 0
+										"numoutlets" : 2
 									}
 
 								}
@@ -2073,10 +2089,10 @@
 									"box" : 									{
 										"maxclass" : "newobj",
 										"text" : "out 1",
-										"numoutlets" : 0,
 										"patching_rect" : [ 15.0, 165.0, 35.0, 22.0 ],
+										"numinlets" : 1,
 										"id" : "obj-4",
-										"numinlets" : 1
+										"numoutlets" : 0
 									}
 
 								}
@@ -2137,7 +2153,7 @@
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 150.0, 240.0, 126.0, 22.0 ],
 					"text" : "mc.gen~ @chans 512",
-					"wrapper_uniquekey" : "u437000428"
+					"wrapper_uniquekey" : "u239000482"
 				}
 
 			}
@@ -2265,13 +2281,6 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-21", 0 ],
-					"source" : [ "obj-22", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
 					"destination" : [ "obj-19", 0 ],
 					"source" : [ "obj-24", 0 ]
 				}
@@ -2315,7 +2324,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-4", 0 ],
+					"destination" : [ "obj-4", 1 ],
 					"order" : 1,
 					"source" : [ "obj-34", 0 ]
 				}
@@ -2323,7 +2332,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"order" : 0,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-5", 0 ],
+					"order" : 1,
 					"source" : [ "obj-4", 0 ]
 				}
 
