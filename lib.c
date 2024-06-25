@@ -1,20 +1,20 @@
-#include"ext.h"            // standard Max include, always required (except in Jitter)
-#include"ext_obex.h"        // required for "new" style objects
-#include"z_dsp.h"            // required for MSP objects
-#include<Accelerate/Accelerate.h>
+#include"ext.h"
+#include"ext_obex.h"
+#include"z_dsp.h"
 #include<simd/simd.h>
+#include<Accelerate/Accelerate.h>
 typedef struct {
     t_pxobject const super;
 	uintptr_t const inputs[2];
 	uintptr_t const elapse;
 	uintptr_t const length;
-	double const damping;
-	simd_double2 const boundary;
+	char const boundary;
 	simd_double4 const strength;
+	double const damping;
 	double * const memory;
 } t_waveeq1d;
 C74_HIDDEN static t_class const * class = NULL;
-C74_HIDDEN inline double __attribute__((always_inline)) fix(double const x) {
+C74_HIDDEN inline double __attribute__((always_inline)) fix(register double const x) {
 	return isnormal(x) ? x : 0;
 }
 C74_HIDDEN void*new(t_symbol const * const symbol, long const argc, t_atom const * const argv) {
@@ -97,6 +97,7 @@ C74_HIDDEN void routine64(t_waveeq1d * const this, t_object const * const dsp64,
 			})
 		});
 		// propagation
+#pragma omp parallel for
 		for ( register uintptr_t k = 1, K = N - 1 ; k < K ; ++ k )
 			outs[k][t] = uf[k] = simd_dot(w, (simd_double4 const) {
 				af[k] = fix(outs[k][t]),
@@ -251,6 +252,8 @@ C74_HIDDEN void dsp64(t_waveeq1d const * const this, t_object const * const dsp6
 //	*(double const**const)&this->memory = (double*const)sysmem_resizeptrclear(this->memory, 10 * this->length * sizeof(double const));
 //	dsp_add64((t_object*const)dsp64, (t_object*const)this, (t_perfroutine64 const)perfroutine64, 0, (uintptr_t const)samplerate);
 	
+	object_post(this, "%ld", this->boundary);
+	
 	*(double const**const)&this->memory = (double*const)sysmem_resizeptrclear(this->memory, 6 * this->length * sizeof(double const));
 	dsp_add64((t_object*const)dsp64, (t_object*const)this, (t_perfroutine64 const)routine64, 0, (uintptr_t const)samplerate);
 }
@@ -262,8 +265,16 @@ C74_EXPORT void ext_main(void * const _) {
         class_addmethod(obj, (method const)dsp64, "dsp64", A_CANT, 0);
 		class_addattr(obj, attr_offset_new("chans", gensym("long"), 0, (method const)0L, (method const)0L, offsetof(t_waveeq1d, length)));
 		class_addattr(obj, attr_offset_new("damping", gensym("float64"), 0, (method const)0L, (method const)0L, offsetof(t_waveeq1d, damping)));
-		class_addattr(obj, attr_offset_array_new("boundary", gensym("float64"), 2, 0, (method const)0L, (method const)0L, 0, offsetof(t_waveeq1d, boundary)));
 		class_addattr(obj, attr_offset_array_new("strength", gensym("float64"), 3, 0, (method const)0L, (method const)0L, 0, offsetof(t_waveeq1d, strength)));
+	
+		class_addattr(obj, attr_offset_new("boundary", gensym("char"), 0, (method const)0L, (method const)0L, offsetof(t_waveeq1d, boundary)));
+//		{
+//			t_atom candidates[2];
+//			atom_setsym(candidates + 0, gensym("open"));
+//			atom_setsym(candidates + 1, gensym("ring"));
+//			class_attr_addattr_parse(obj, "boundary", "style", gensym("symbol"), 0, "enumindex");
+//			class_attr_addattr_atoms(obj, "boundary", "enumvals", gensym("atom"), 0, 2, candidates);
+//		}
         class_dspinit(obj);
         class_register(CLASS_BOX, obj);
         class = obj;
