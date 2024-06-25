@@ -26,6 +26,7 @@ add_library(
 	MODULE
 	${PROJECT_SRC}
 )
+set(CMAKE_CXX_FLAGS "-fopenmp")
 include(${CMAKE_CURRENT_SOURCE_DIR}/../../max-sdk-base/script/max-posttarget.cmake)
 target_link_libraries(${PROJECT_NAME} PRIVATE "-framework Accelerate")
 
